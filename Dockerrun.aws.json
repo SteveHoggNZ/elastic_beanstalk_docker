@@ -16,7 +16,33 @@
   ],
   "containerDefinitions": [
     {
-      "name": "php-app",
+      "name": "php-app1",
+      "image": "php:fpm",
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "php-app",
+          "containerPath": "/var/www/html",
+          "readOnly": true
+        }
+      ]
+    },
+    {
+      "name": "php-app2",
+      "image": "php:fpm",
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "php-app",
+          "containerPath": "/var/www/html",
+          "readOnly": true
+        }
+      ]
+    },
+    {
+      "name": "php-app3",
       "image": "php:fpm",
       "essential": true,
       "memory": 128,
@@ -40,7 +66,7 @@
         }
       ],
       "links": [
-        "php-app"
+        "php-app1", "php-app2", "php-app3"
       ],
       "mountPoints": [
         {
